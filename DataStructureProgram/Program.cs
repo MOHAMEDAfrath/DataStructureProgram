@@ -13,6 +13,7 @@ namespace DataStructureProgram
                 Console.WriteLine("Enter 2 for Ordered List");
                 Console.WriteLine("Enter 3 for Balancing Parentheses");
                 Console.WriteLine("Enter 4 for Bank Cash Counter");
+                Console.WriteLine("Enter 5 for Palindrome check using Dequeue");
                 switch (Console.ReadLine())
                 {
                     case "1":
@@ -54,6 +55,12 @@ namespace DataStructureProgram
                         bank.Display();
                         break;
                     case "5":
+                        Console.WriteLine("Palindrome");
+                        PalindromeDeque palindromeDeque = new PalindromeDeque();
+                        Console.WriteLine("Enter the string");
+                        palindromeDeque.EnqueueString(Console.ReadLine());
+                        break;
+                    case "6":
                         return;
 
                 }
