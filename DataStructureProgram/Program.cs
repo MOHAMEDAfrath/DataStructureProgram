@@ -11,6 +11,7 @@ namespace DataStructureProgram
             {
                 Console.WriteLine("Enter 1 for Unordered List");
                 Console.WriteLine("Enter 2 for Ordered List");
+                Console.WriteLine("Enter 3 for Balancing Parentheses");
                 switch (Console.ReadLine())
                 {
                     case "1":
@@ -23,6 +24,7 @@ namespace DataStructureProgram
                         unordered.Search(Console.ReadLine());
                         Console.WriteLine("After the contents in the file modified: ");
                         unordered.Display();
+                        Console.WriteLine(" ");
                         break;
                     case "2":
                         Console.WriteLine("Ordered List");
@@ -33,8 +35,15 @@ namespace DataStructureProgram
                         orderedList.Search(Console.ReadLine());
                         Console.WriteLine("After the contents in the file modified: ");
                         orderedList.Display();
+                        Console.WriteLine(" ");
                         break;
                     case "3":
+                        Console.WriteLine("Balancing Parentheses");
+                        BalancingPrentheses balancing = new BalancingPrentheses();
+                        balancing.BalancingParenthesesOperations();
+                        Console.WriteLine(" ");
+                        break;
+                    case "4":
                         return;
 
                 }
