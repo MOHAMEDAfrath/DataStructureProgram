@@ -12,6 +12,7 @@ namespace DataStructureProgram
                 Console.WriteLine("Enter 1 for Unordered List");
                 Console.WriteLine("Enter 2 for Ordered List");
                 Console.WriteLine("Enter 3 for Balancing Parentheses");
+                Console.WriteLine("Enter 4 for Bank Cash Counter");
                 switch (Console.ReadLine())
                 {
                     case "1":
@@ -44,6 +45,15 @@ namespace DataStructureProgram
                         Console.WriteLine(" ");
                         break;
                     case "4":
+                        Console.WriteLine("Bank Cash Counters");
+                        BankCashCounter bank = new BankCashCounter();
+                        bank.CreateQueueWithCustomers("member1");
+                        bank.CreateQueueWithCustomers("member2");
+                        bank.CreateQueueWithCustomers("member3");
+                        Console.WriteLine("Created the Queue with members");
+                        bank.Display();
+                        break;
+                    case "5":
                         return;
 
                 }
