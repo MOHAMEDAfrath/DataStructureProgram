@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace DataStructureProgram
 {
-    class UnorderedList
+    class OrderedList
     {
         Node head;
-        public void UnOrdered()
+        public void Ordered()
         {
-            string text = File.ReadAllText(@"C:\Users\afrat\source\repos\DataStructureProgram\DataStructureProgram\Temporary.txt");
+            string text = File.ReadAllText(@"C:\Users\afrat\source\repos\DataStructureProgram\DataStructureProgram\OrderedList.txt");
             string[] arr = text.Split(" ", StringSplitOptions.RemoveEmptyEntries);
-            for(int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < arr.Length; i++)
             {
                 InsertAtLast(arr[i]);
             }
@@ -34,7 +34,7 @@ namespace DataStructureProgram
             }
 
         }
-        
+
         public Node GetLastNode()
         {
             Node temp = this.head;
@@ -44,6 +44,57 @@ namespace DataStructureProgram
             }
             return temp;
         }
+        public void Sort()
+        {
+            Node temp = this.head;
+            for (; temp != null; temp = temp.next)
+            {
+                for (Node cur = temp.next; cur != null; cur = cur.next)
+                {
+                    if (Convert.ToInt32(temp.data)>Convert.ToInt32(cur.data))
+                    {
+                        string temporary = temp.data;
+                        temp.data = cur.data;
+                        cur.data = temporary;
+                    }
+                }
+
+            }
+
+        }
+        public void InsertAtSortedPosition(string key)
+        {
+            Node newnode = new Node(key);
+            if (Convert.ToInt32(this.head.data) > Convert.ToInt32(key))
+            {
+                newnode.next = this.head;
+                this.head = newnode;
+                return;
+            }
+            Node last = GetLastNode();
+            if (Convert.ToInt32(last.data) < Convert.ToInt32(key))
+            {
+                last.next = newnode;
+                return;
+            }
+            Node temp = this.head;
+            Node cur = null;
+            while (temp != null)
+            {
+                if(Convert.ToInt32(temp.data) < Convert.ToInt32(key))
+                {
+                    cur = temp;
+                    temp = temp.next; 
+                }
+                else
+                {
+                    cur.next = newnode;
+                    newnode.next = temp;
+                    break;
+                }
+            }
+            
+        }
         public void Search(string key)
         {
             bool found = true;
@@ -52,19 +103,19 @@ namespace DataStructureProgram
             {
                 if (temp.data == key)
                 {
-                    found = false;  
+                    found = false;
                 }
                 temp = temp.next;
             }
-            if(found == false)
+            if (found == false)
             {
                 IfFoundRemove(key);
             }
             else
             {
-                InsertAtLast(key);
+                InsertAtSortedPosition(key);
             }
-            
+
         }
         public void IfFoundRemove(string key)
         {
@@ -95,11 +146,11 @@ namespace DataStructureProgram
             while (temp != null)
             {
                 Console.Write("{0} ", temp.data);
-                result += temp.data+" ";
+                result += temp.data + " ";
                 temp = temp.next;
 
             }
-           File.WriteAllText(@"C:\Users\afrat\source\repos\DataStructureProgram\DataStructureProgram\Temporary.txt", result);
+            File.WriteAllText(@"C:\Users\afrat\source\repos\DataStructureProgram\DataStructureProgram\OrderedList.txt", result);
             Console.WriteLine(" ");
         }
     }
