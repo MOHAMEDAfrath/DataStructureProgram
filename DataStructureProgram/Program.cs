@@ -14,6 +14,8 @@ namespace DataStructureProgram
                 Console.WriteLine("Enter 3 for Balancing Parentheses");
                 Console.WriteLine("Enter 4 for Bank Cash Counter");
                 Console.WriteLine("Enter 5 for Palindrome check using Dequeue");
+                Console.WriteLine("Enter 6 for Queue using stacks ");
+
                 switch (Console.ReadLine())
                 {
                     case "1":
@@ -61,6 +63,27 @@ namespace DataStructureProgram
                         palindromeDeque.EnqueueString(Console.ReadLine());
                         break;
                     case "6":
+                        Console.WriteLine("Queue using stacks");
+                        QueueUsingStacks queue = new QueueUsingStacks();
+                        Console.WriteLine("Enter the number of data to be inserted");
+                        int number = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Enter 1 for Enqueue");
+                        switch (Console.ReadLine())
+                        {
+                            case "1":
+                                queue.Enqueue(number);
+                                Console.WriteLine("Enter 2 for Dequeue");
+                                switch (Console.ReadLine())
+                                {
+                                    case "2":
+                                        queue.Dequeue(number);
+                                        break;
+                                }
+                                break; 
+                        }
+                
+                        break;
+                    case "7":
                         return;
 
                 }
