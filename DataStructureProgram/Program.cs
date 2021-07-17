@@ -15,7 +15,7 @@ namespace DataStructureProgram
                 Console.WriteLine("Enter 4 for Bank Cash Counter");
                 Console.WriteLine("Enter 5 for Palindrome check using Dequeue");
                 Console.WriteLine("Enter 6 for Queue using stacks ");
-
+                Console.WriteLine("Enter 7 for No of BST");
                 switch (Console.ReadLine())
                 {
                     case "1":
@@ -84,6 +84,11 @@ namespace DataStructureProgram
                 
                         break;
                     case "7":
+                        Console.WriteLine("No of BST for given number of Nodes");
+                        Console.WriteLine("Enter the number of nodes");
+                        Console.WriteLine("The number of possible BST {0}",NoOfBST.CountBST(Convert.ToInt32(Console.ReadLine())));
+                        break;
+                    case "8":
                         return;
 
                 }
