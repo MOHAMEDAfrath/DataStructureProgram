@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace DataStructureProgram
 {
-    class BankCashCounter
+    class BankCashCounter<T> where T:IComparable
     {
-        Node front = null, rear = null;
+        Node<T> front = null, rear = null;
         int count = 0;bool flag = true;
-        public void CreateQueueWithCustomers(string customers)
+        public void CreateQueueWithCustomers(T customers)
         {
 
-            Node newnode = new Node(customers);
+            Node<T> newnode = new Node<T>(customers);
             if (this.front == null)
             {
                 count++;
@@ -40,7 +40,7 @@ namespace DataStructureProgram
             BankOperations(this.front.data);
              this.front = this.front.next;
         }
-        public void BankOperations(string member)
+        public void BankOperations(T member)
         {
             while(this.front != null) { 
                 int amount = 1000;
@@ -76,7 +76,7 @@ namespace DataStructureProgram
         }
         public void Display()
         {
-            Node temp = this.front;
+            Node<T> temp = this.front;
             while (temp != null)
             {
                 Console.Write(temp.data + " ");

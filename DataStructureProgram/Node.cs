@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace DataStructureProgram
 {
-    class Node
+    class Node<T>
     {
-        public string data;
-        public Node next;
-        public Node(string data)
+        public T data;
+        public Node<T> next;
+        public Node(T data)
         {
             this.data = data;
             this.next = null;

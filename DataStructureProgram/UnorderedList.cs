@@ -7,50 +7,50 @@ using System.Threading.Tasks;
 
 namespace DataStructureProgram
 {
-    class UnorderedList
+    class UnorderedList<T>
     {
-        Node head;
+        Node<T> head;
         public void UnOrdered()
         {
             string text = File.ReadAllText(@"C:\Users\afrat\source\repos\DataStructureProgram\DataStructureProgram\Temporary.txt");
             string[] arr = text.Split(" ", StringSplitOptions.RemoveEmptyEntries);
             for(int i = 0; i < arr.Length; i++)
             {
-                InsertAtLast(arr[i]);
+                InsertAtLast((T)Convert.ChangeType(arr[i],typeof(T)));
             }
 
         }
-        public void InsertAtLast(string data)
+        public void InsertAtLast(T data)
         {
-            Node newnode = new Node(data);
+            Node<T> newnode = new Node<T>(data);
             if (this.head == null)
             {
                 this.head = newnode;
             }
             else
             {
-                Node lastNode = GetLastNode();
+                Node<T> lastNode = GetLastNode();
                 lastNode.next = newnode;
             }
 
         }
         
-        public Node GetLastNode()
+        public Node<T> GetLastNode()
         {
-            Node temp = this.head;
+            Node<T> temp = this.head;
             while (temp.next != null)
             {
                 temp = temp.next;
             }
             return temp;
         }
-        public void Search(string key)
+        public void Search(T key)
         {
             bool found = true;
-            Node temp = this.head;
+            Node<T> temp = this.head;
             while (temp != null)
             {
-                if (temp.data == key)
+                if (temp.data.Equals(key))
                 {
                     found = false;  
                 }
@@ -58,7 +58,7 @@ namespace DataStructureProgram
             }
             if(found == false)
             {
-                IfFoundRemove(key);
+                IfFoundRemove((T)Convert.ChangeType(key, typeof(T)));
             }
             else
             {
@@ -66,11 +66,11 @@ namespace DataStructureProgram
             }
             
         }
-        public void IfFoundRemove(string key)
+        public void IfFoundRemove(T key)
         {
-            Node temp = this.head;
-            Node current = null;
-            if (temp.data == key)
+            Node<T> temp = this.head;
+            Node<T> current = null;
+            if (temp.data.Equals(key))
             {
                 this.head = temp.next;
             }
@@ -78,7 +78,7 @@ namespace DataStructureProgram
             {
                 while (temp != null)
                 {
-                    if (temp.data == key)
+                    if (temp.data.Equals(key))
                     {
                         current.next = temp.next;
                         break;
@@ -91,7 +91,7 @@ namespace DataStructureProgram
         public void Display()
         {
             string result = "";
-            Node temp = this.head;
+            Node<T> temp = this.head;
             while (temp != null)
             {
                 Console.Write("{0} ", temp.data);

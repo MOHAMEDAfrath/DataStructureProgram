@@ -20,7 +20,7 @@ namespace DataStructureProgram
                 {
                     case "1":
                         Console.WriteLine("Unordered List");
-                        UnorderedList unordered = new UnorderedList();
+                        UnorderedList<string> unordered = new UnorderedList<string>();
                         unordered.UnOrdered();
                         Console.WriteLine("The contents in the file: ");
                         unordered.Display();
@@ -32,7 +32,7 @@ namespace DataStructureProgram
                         break;
                     case "2":
                         Console.WriteLine("Ordered List");
-                        OrderedList orderedList = new OrderedList();
+                        OrderedList<int> orderedList = new OrderedList<int>();
                         orderedList.Ordered();
                         orderedList.Sort();
                         Console.WriteLine("Enter the data in the file to search");
@@ -43,13 +43,13 @@ namespace DataStructureProgram
                         break;
                     case "3":
                         Console.WriteLine("Balancing Parentheses");
-                        BalancingPrentheses balancing = new BalancingPrentheses();
+                        BalancingPrentheses<string> balancing = new BalancingPrentheses<string>();
                         balancing.BalancingParenthesesOperations();
                         Console.WriteLine(" ");
                         break;
                     case "4":
                         Console.WriteLine("Bank Cash Counters");
-                        BankCashCounter bank = new BankCashCounter();
+                        BankCashCounter<string> bank = new BankCashCounter<string>();
                         bank.CreateQueueWithCustomers("member1");
                         bank.CreateQueueWithCustomers("member2");
                         bank.CreateQueueWithCustomers("member3");
@@ -58,13 +58,13 @@ namespace DataStructureProgram
                         break;
                     case "5":
                         Console.WriteLine("Palindrome");
-                        PalindromeDeque palindromeDeque = new PalindromeDeque();
+                        PalindromeDeque<string> palindromeDeque = new PalindromeDeque<string>();
                         Console.WriteLine("Enter the string");
                         palindromeDeque.EnqueueString(Console.ReadLine());
                         break;
                     case "6":
                         Console.WriteLine("Queue using stacks");
-                        QueueUsingStacks queue = new QueueUsingStacks();
+                        QueueUsingStacks<string> queue = new QueueUsingStacks<string>();
                         Console.WriteLine("Enter the number of data to be inserted");
                         int number = Convert.ToInt32(Console.ReadLine());
                         Console.WriteLine("Enter 1 for Enqueue");

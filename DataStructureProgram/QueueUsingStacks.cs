@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace DataStructureProgram
 {
-    class QueueUsingStacks
+    class QueueUsingStacks<T> where T:IComparable
     {
-        Node top = null;
-        Node top1 = null;
+        Node<T> top = null;
+        Node<T> top1 = null;
         public void Enqueue(int number)
         {
-            for(int i = 0; i < number; i++)
+            for(int i = 0; i.CompareTo(number)<0; i++)
             {
                 Console.WriteLine("Enter data");
-                PushStack1(Console.ReadLine());
+                PushStack1((T)Convert.ChangeType(Console.ReadLine(),typeof(T)));
             }
            
-           for (int i = 0; i < number; i++)
+           for (int i = 0; i.CompareTo(number) < 0; i++)
             {
                 Pop(this.top);
 
@@ -36,9 +36,9 @@ namespace DataStructureProgram
 
             
         }
-            public void PushStack1(string data)
+            public void PushStack1(T data)
             {
-                Node newnode = new Node(data);
+                Node<T> newnode = new Node<T>(data);
                 if (this.top == null)
                 {
                     newnode.next = null;
@@ -49,7 +49,7 @@ namespace DataStructureProgram
                 }
                 this.top = newnode;
             }
-        public void Pop(Node top)
+        public void Pop(Node<T> top)
         {
             if (this.top == null)
             {
@@ -58,16 +58,16 @@ namespace DataStructureProgram
             }
             else
             {
-                PushStack2(this.top.data);
+                PushStack2((T)Convert.ChangeType(this.top.data,typeof(T)));
             }
             this.top = this.top.next;
         }
 
 
 
-        public void PushStack2(string data)
+        public void PushStack2(T data)
         {
-            Node newnode = new Node(data);
+            Node<T> newnode = new Node<T>(data);
             if (this.top1 == null)
             {
                 newnode.next = null;
@@ -96,7 +96,7 @@ namespace DataStructureProgram
 
         public void Display()
         {
-            Node temp = this.top1;
+            Node<T> temp = this.top1;
             while (temp != null)
             {
                 Console.Write("-->"+temp.data);

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataStructureProgram
 {
-    class BalancingPrentheses
+    class BalancingPrentheses<T> where T:IComparable
     {
         public void BalancingParenthesesOperations()
         {
@@ -15,7 +15,7 @@ namespace DataStructureProgram
             {
                 if(expressions[i] == '(')
                 {
-                    Push(Convert.ToString(expressions[i]));
+                    Push((T)Convert.ChangeType(expressions[i],typeof(T)));
                 }
             }
             for(int i = 0; i < expressions.Length; i++)
@@ -40,10 +40,10 @@ namespace DataStructureProgram
                 Console.WriteLine(expressions+" Not Balanced Parentheses");
             }
         }
-        Node top = null;
-        public void Push(string data)
+        Node<T> top = null;
+        public void Push(T data)
         {
-            Node newnode = new Node(data);
+            Node<T> newnode = new Node<T>(data);
             if (top == null)
             {
                 newnode.next = null;

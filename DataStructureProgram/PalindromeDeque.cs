@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 
 namespace DataStructureProgram
 {
-    class PalindromeDeque
+    class PalindromeDeque<T> where T:IComparable
     {
-        Node front = null;
+        Node<T> front = null;
         string result = "";
         public void EnqueueString(string data)
         {
             for (int i = 0; i <data.Length; i++) {
-                Node newnode = new Node(Convert.ToString(data[i]));
+                Node<T> newnode = new Node<T>((T)Convert.ChangeType(data[i],typeof(T)));
                 if (this.front == null)
                 {
                     this.front = newnode;
                 }
                 else
                 {
-                    Node lastNode = GetLastNode();
+                    Node<T> lastNode = GetLastNode();
                     lastNode.next = newnode;
                 }
             }
@@ -38,9 +38,9 @@ namespace DataStructureProgram
             }
         }
 
-        public Node GetLastNode()
+        public Node<T> GetLastNode()
         {
-            Node temp = this.front;
+            Node<T> temp = this.front;
             while (temp.next != null)
             {
                 temp = temp.next;
@@ -58,7 +58,7 @@ namespace DataStructureProgram
                 result+=this.front.data;
                 return;
             }
-            Node newnode = this.front;
+            Node<T> newnode = this.front;
             while (newnode.next.next != null)
             {
                 newnode = newnode.next;

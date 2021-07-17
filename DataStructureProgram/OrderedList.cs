@@ -7,37 +7,37 @@ using System.Threading.Tasks;
 
 namespace DataStructureProgram
 {
-    class OrderedList
+    class OrderedList<T> where T:IComparable
     {
-        Node head;
+        Node<T> head;
         public void Ordered()
         {
             string text = File.ReadAllText(@"C:\Users\afrat\source\repos\DataStructureProgram\DataStructureProgram\OrderedList.txt");
             string[] arr = text.Split(" ", StringSplitOptions.RemoveEmptyEntries);
             for (int i = 0; i < arr.Length; i++)
             {
-                InsertAtLast(arr[i]);
+                InsertAtLast((T)Convert.ChangeType(arr[i],typeof(T)));
             }
 
         }
-        public void InsertAtLast(string data)
+        public void InsertAtLast(T data)
         {
-            Node newnode = new Node(data);
+            Node<T> newnode = new Node<T>(data);
             if (this.head == null)
             {
                 this.head = newnode;
             }
             else
             {
-                Node lastNode = GetLastNode();
+                Node<T> lastNode = GetLastNode();
                 lastNode.next = newnode;
             }
 
         }
 
-        public Node GetLastNode()
+        public Node<T> GetLastNode()
         {
-            Node temp = this.head;
+            Node<T> temp = this.head;
             while (temp.next != null)
             {
                 temp = temp.next;
@@ -46,14 +46,14 @@ namespace DataStructureProgram
         }
         public void Sort()
         {
-            Node temp = this.head;
+            Node<T> temp = this.head;
             for (; temp != null; temp = temp.next)
             {
-                for (Node cur = temp.next; cur != null; cur = cur.next)
+                for (Node<T> cur = temp.next; cur != null; cur = cur.next)
                 {
                     if (Convert.ToInt32(temp.data)>Convert.ToInt32(cur.data))
                     {
-                        string temporary = temp.data;
+                        T temporary = temp.data;
                         temp.data = cur.data;
                         cur.data = temporary;
                     }
@@ -62,23 +62,23 @@ namespace DataStructureProgram
             }
 
         }
-        public void InsertAtSortedPosition(string key)
+        public void InsertAtSortedPosition(T key)
         {
-            Node newnode = new Node(key);
+            Node<T> newnode = new Node<T>(key);
             if (Convert.ToInt32(this.head.data) > Convert.ToInt32(key))
             {
                 newnode.next = this.head;
                 this.head = newnode;
                 return;
             }
-            Node last = GetLastNode();
+            Node<T> last = GetLastNode();
             if (Convert.ToInt32(last.data) < Convert.ToInt32(key))
             {
                 last.next = newnode;
                 return;
             }
-            Node temp = this.head;
-            Node cur = null;
+            Node<T> temp = this.head;
+            Node<T> cur = null;
             while (temp != null)
             {
                 if(Convert.ToInt32(temp.data) < Convert.ToInt32(key))
@@ -98,10 +98,10 @@ namespace DataStructureProgram
         public void Search(string key)
         {
             bool found = true;
-            Node temp = this.head;
+            Node<T> temp = this.head;
             while (temp != null)
             {
-                if (temp.data == key)
+                if (temp.data.CompareTo((T)Convert.ChangeType(key,typeof(T)))== 0)
                 {
                     found = false;
                 }
@@ -109,19 +109,19 @@ namespace DataStructureProgram
             }
             if (found == false)
             {
-                IfFoundRemove(key);
+                IfFoundRemove((T)Convert.ChangeType(key, typeof(T)));
             }
             else
             {
-                InsertAtSortedPosition(key);
+                InsertAtSortedPosition((T)Convert.ChangeType(key,typeof(T)));
             }
 
         }
-        public void IfFoundRemove(string key)
+        public void IfFoundRemove(T key)
         {
-            Node temp = this.head;
-            Node current = null;
-            if (temp.data == key)
+            Node<T> temp = this.head;
+            Node<T> current = null;
+            if (temp.data.CompareTo(key) == 0)
             {
                 this.head = temp.next;
             }
@@ -129,7 +129,7 @@ namespace DataStructureProgram
             {
                 while (temp != null)
                 {
-                    if (temp.data == key)
+                    if (temp.data.CompareTo(key) == 0)
                     {
                         current.next = temp.next;
                         break;
@@ -142,7 +142,7 @@ namespace DataStructureProgram
         public void Display()
         {
             string result = "";
-            Node temp = this.head;
+            Node<T> temp = this.head;
             while (temp != null)
             {
                 Console.Write("{0} ", temp.data);
