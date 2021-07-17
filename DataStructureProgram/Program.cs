@@ -17,6 +17,7 @@ namespace DataStructureProgram
                 Console.WriteLine("Enter 6 for Queue using stacks ");
                 Console.WriteLine("Enter 7 for No of BST");
                 Console.WriteLine("Enter 8 for Prime Numbers in Range 1-1000");
+                Console.WriteLine("Enter 9 for Hashing in Number Slots");
                 switch (Console.ReadLine())
                 {
                     case "1":
@@ -95,6 +96,12 @@ namespace DataStructureProgram
                         primeNumberIn2D.PrimeChecker(1,1000);
                         break;
                     case "9":
+                        Console.WriteLine("Hashing Slots");
+                        Hashing<string> hashing = new Hashing<string>(11);
+                        hashing.ReadInput();
+                        Console.WriteLine(" ");
+                        break;
+                    case "10":
                         return;
 
                 }
