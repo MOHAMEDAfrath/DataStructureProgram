@@ -16,6 +16,7 @@ namespace DataStructureProgram
                 Console.WriteLine("Enter 5 for Palindrome check using Dequeue");
                 Console.WriteLine("Enter 6 for Queue using stacks ");
                 Console.WriteLine("Enter 7 for No of BST");
+                Console.WriteLine("Enter 8 for Prime Numbers in Range 1-1000");
                 switch (Console.ReadLine())
                 {
                     case "1":
@@ -89,6 +90,11 @@ namespace DataStructureProgram
                         Console.WriteLine("The number of possible BST {0}",NoOfBST.CountBST(Convert.ToInt32(Console.ReadLine())));
                         break;
                     case "8":
+                        Console.WriteLine("Prime Number in range 1-1000");
+                        PrimeNumberIn2D<int> primeNumberIn2D = new PrimeNumberIn2D<int>();
+                        primeNumberIn2D.PrimeChecker(1,1000);
+                        break;
+                    case "9":
                         return;
 
                 }
