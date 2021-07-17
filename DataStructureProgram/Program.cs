@@ -18,6 +18,7 @@ namespace DataStructureProgram
                 Console.WriteLine("Enter 7 for No of BST");
                 Console.WriteLine("Enter 8 for Prime Numbers in Range 1-1000");
                 Console.WriteLine("Enter 9 for Hashing in Number Slots");
+                Console.WriteLine("Enter 10 for Calendar of a month");
                 switch (Console.ReadLine())
                 {
                     case "1":
@@ -102,6 +103,17 @@ namespace DataStructureProgram
                         Console.WriteLine(" ");
                         break;
                     case "10":
+                        Console.WriteLine("Calendar");
+                        Console.WriteLine("Enter Month");
+                        int month = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Enter Year");
+                        int year = Convert.ToInt32(Console.ReadLine());
+                        Calendar calendar = new Calendar(month,year);
+                        calendar.Header();
+                        calendar.CalenderFill();
+                        calendar.DisplayCalendar();
+                        break;
+                    case "11":
                         return;
 
                 }
