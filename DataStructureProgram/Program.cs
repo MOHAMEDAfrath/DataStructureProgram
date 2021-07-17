@@ -90,7 +90,7 @@ namespace DataStructureProgram
                         Console.WriteLine("The number of possible BST {0}",NoOfBST.CountBST(Convert.ToInt32(Console.ReadLine())));
                         break;
                     case "8":
-                        Console.WriteLine("Prime Number in range 1-1000");
+                        Console.WriteLine("Prime Number and anagrams in range 1-1000");
                         PrimeNumberIn2D<int> primeNumberIn2D = new PrimeNumberIn2D<int>();
                         primeNumberIn2D.PrimeChecker(1,1000);
                         break;

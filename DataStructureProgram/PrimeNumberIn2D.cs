@@ -12,13 +12,15 @@ namespace DataStructureProgram
         public void PrimeChecker(int start, int end)
         {
             T[,] primeNumbers = new T[10, 100];
-            for (int i = start + 1; i.CompareTo(end)<=0; i++)
+            T[,] Anagram = new T[10, 100];
+            T[,] NotAnagram = new T[10, 100];
+            for (int i = start + 1; i <= end; i++)
             {
                 if (i > 100)
                 {
                     string temp = Convert.ToString(i);
-                    char changeindex = temp[0];
-                    range = Convert.ToInt32(changeindex) - 48;
+                    char ind = temp[0];
+                    range = Convert.ToInt32(ind) - 48;
 
                 }
                 if (change != range)
@@ -37,19 +39,102 @@ namespace DataStructureProgram
                 }
                 if (i != 1 && (flag != 1 || i == 2))
                 {
-                    primeNumbers[range,index] = (T)Convert.ChangeType(i,typeof(T));
+                    primeNumbers[range, index] = (T)Convert.ChangeType(i, typeof(T)); ;
                     index++;
                 }
             }
-
-
+            change = 0;
             for (int k = 0; k < 10; k++)
             {
                 for (int l = 0; l < 100; l++)
                 {
                     if (primeNumbers[k, l].CompareTo((T)Convert.ChangeType(0, typeof(T))) > 0)
                     {
-                        Console.Write(primeNumbers[k, l] + " ");
+                        Console.Write(primeNumbers[k, l]+" ");
+
+                        if (primeNumbers[k, l].CompareTo((T)Convert.ChangeType(100, typeof(T))) > 0)
+                        {
+                            string tempVal = Convert.ToString(primeNumbers[k, l]);
+                            char ind = tempVal[0];
+                            range = Convert.ToInt32(ind) - 48;
+
+                        }
+                        if (change != range)
+                        {
+                            index = 0;
+                            change = range;
+                        }
+                        char[] temp = primeNumbers[k, l].ToString().ToCharArray();
+                        Array.Sort(temp);
+                        int SecondString = 0;
+                        int firstString = Convert.ToInt32(String.Join("", temp));
+                        int q;
+                        for (q = l + 1; q < 100; q++)
+                        {
+                            char[] secondtemp = primeNumbers[k, q].ToString().ToCharArray();
+                            Array.Sort(secondtemp);
+                            SecondString = Convert.ToInt32(String.Join("", secondtemp));
+                            if (firstString == SecondString)
+                            {
+                                break;
+                            }
+                        }
+                        if (SecondString == firstString)
+                        {
+                            Anagram[range, index] = primeNumbers[k, l];
+                            index++;
+                            Anagram[range, index] = primeNumbers[k, q];
+                            index++;
+
+                        }
+                    }
+                }
+                Console.WriteLine(" ");
+            }
+            Console.WriteLine("Anagram Numbers in Range ({0} - {1})", start, end);
+            for (int k = 0; k < 10; k++)
+            {
+                for (int l = 0; l < 100; l++)
+                {
+                    if (Anagram[k, l].CompareTo((T)Convert.ChangeType(0, typeof(T)))>0)
+                    {
+                        Console.Write(Anagram[k, l]+" ");
+                    }
+
+                }
+               Console.WriteLine(" ");
+            }
+            Console.WriteLine(" Not Anagram Numbers in Range {0} - {1}", start, end);
+            int check = 0; ;
+            for (int k = 0; k < 10; k++)
+            {
+                for (int l = 0; l < 100; l++)
+                {
+                    check = 0;
+                    if (primeNumbers[k, l].CompareTo((T)Convert.ChangeType(0, typeof(T))) > 0)
+                    {
+                        for (int p = 0; p < 10; p++)
+                        {
+                            for (int m = 0; m < 100; m++)
+                            {
+
+                                if (primeNumbers[k, l].CompareTo(Anagram[p, m])==0)
+                                {
+                                    check = 1;
+                                    break;
+                                }
+                            }
+                            if (check == 1)
+                            {
+                                break;
+                            }
+                        }
+                        if (check == 0)
+                        {
+                            NotAnagram[k, l] = primeNumbers[k, l];
+                            Console.Write(NotAnagram[k, l]+" ");
+                        }
+
                     }
                 }
                 Console.WriteLine(" ");
