@@ -45,6 +45,7 @@ namespace DataStructureProgram
                     index++;
                 }
             }
+            //Anagram Founder
             change = 0;
             for (int k = 0; k < 10; k++)
             {
@@ -150,6 +151,7 @@ namespace DataStructureProgram
             }
 
         }
+        //Stack operations
         Node<T> top = null;
         public void Push(T data)
         {
