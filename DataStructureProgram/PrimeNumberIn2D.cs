@@ -10,7 +10,6 @@ namespace DataStructureProgram
     public class PrimeNumberIn2D<T> where T:IComparable
     {
         public Node<T> top = null;
-        public Node<T> front = null, rear = null;
         public  int range = 0, index = 0, change = 0;
         public void PrimeChecker(int start, int end)
         {
@@ -118,10 +117,6 @@ namespace DataStructureProgram
             Console.WriteLine(" ");
             Display(this.top);
             Console.WriteLine(" ");
-            Console.WriteLine("Anagram Numbers using Queue");
-            Console.WriteLine(" ");
-            Display(this.front);
-            Console.WriteLine(" ");
             Console.WriteLine(" Not Anagram Numbers in Range {0} - {1}", start, end);
             int check = 0; ;
             for (int k = 0; k < 10; k++)
@@ -173,21 +168,7 @@ namespace DataStructureProgram
                 }
                 this.top = newnode;
         }
-        public void QueueOperations(T data)
-        {
-            Node<T> newnode = new Node<T>(data);
-            if (this.front == null)
-            {
-                newnode.next = null;
-                this.front = newnode;
-                this.rear = newnode;
-            }
-            else
-            {
-                this.rear.next = newnode;
-                this.rear = newnode;
-            }
-        }
+        
         public void Display(Node<T> top)
         {
             Node<T> temp = top;
