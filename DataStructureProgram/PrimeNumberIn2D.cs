@@ -167,6 +167,7 @@ namespace DataStructureProgram
             this.top = newnode;
 
         }
+        //Display method
         public void Display()
         {
             Node<T> temp = this.top;
