@@ -11,6 +11,7 @@ namespace DataStructureProgram
         int month;
         int year;
         int[,] calendar;
+        string[] months = { "January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
         int currentDay = 1;
         public Calendar(int month,int year)
         {
@@ -20,7 +21,8 @@ namespace DataStructureProgram
         }
         public void Header()
         {
-            Console.WriteLine("*******"+month+"-"+year+"*******");
+            Console.WriteLine("*******Calendar "+month+"-"+year+"*******");
+            Console.WriteLine(months[month-1]+" "+year);
             Console.WriteLine("Sun Mon Tue Wed Thur Fri Sat");
         }
         public static int DayFromDate(int date, int month, int year)
