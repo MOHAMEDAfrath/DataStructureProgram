@@ -9,7 +9,8 @@ namespace DataStructureProgram
 
     public class PrimeNumberIn2D<T> where T:IComparable
     {
-       
+        public Node<T> top = null;
+        public Node<T> front = null, rear = null;
         public  int range = 0, index = 0, change = 0;
         public void PrimeChecker(int start, int end)
         {
@@ -69,26 +70,28 @@ namespace DataStructureProgram
                         }
                         char[] temp = primeNumbers[k, l].ToString().ToCharArray();
                         Array.Sort(temp);
-                        int SecondString = 0;
+                        int secondString = 0;
                         int firstString = Convert.ToInt32(String.Join("", temp));
                         int q;
                         for (q = l + 1; q < 100; q++)
                         {
                             char[] secondtemp = primeNumbers[k, q].ToString().ToCharArray();
                             Array.Sort(secondtemp);
-                            SecondString = Convert.ToInt32(String.Join("", secondtemp));
-                            if (firstString == SecondString)
+                            secondString = Convert.ToInt32(String.Join("", secondtemp));
+                            if (firstString == secondString)
                             {
                                 break;
                             }
                         }
-                        if (SecondString == firstString)
+                        if (secondString == firstString)
                         {
                             Anagram[range, index] = primeNumbers[k, l];
-                            Push(Anagram[range,index]);
+                            StackOperations(Anagram[range,index]);
+                            QueueOperations(Anagram[range, index]);
                             index++;
                             Anagram[range, index] = primeNumbers[k, q];
-                            Push(Anagram[range,index]);
+                            StackOperations(Anagram[range,index]);
+                            QueueOperations(Anagram[range, index]);
                             index++;
 
                         }
@@ -113,7 +116,12 @@ namespace DataStructureProgram
             }
             Console.WriteLine("Anagram in Reverse using Stack");
             Console.WriteLine(" ");
-            Display();
+            Display(this.top);
+            Console.WriteLine(" ");
+            Console.WriteLine("Anagram Numbers using Queue");
+            Console.WriteLine(" ");
+            Display(this.front);
+            Console.WriteLine(" ");
             Console.WriteLine(" Not Anagram Numbers in Range {0} - {1}", start, end);
             int check = 0; ;
             for (int k = 0; k < 10; k++)
@@ -152,24 +160,37 @@ namespace DataStructureProgram
 
         }
         //Stack operations
-        Node<T> top = null;
-        public void Push(T data)
+        public void StackOperations(T data) {
+            
+            Node<T> newnode = new Node<T>(data);
+                if (this.top == null)
+                {
+                    newnode.next = null;
+                }
+                else
+                {
+                    newnode.next = this.top;
+                }
+                this.top = newnode;
+        }
+        public void QueueOperations(T data)
         {
             Node<T> newnode = new Node<T>(data);
-            if (top == null)
+            if (this.front == null)
             {
                 newnode.next = null;
+                this.front = newnode;
+                this.rear = newnode;
             }
             else
             {
-                newnode.next = this.top;
+                this.rear.next = newnode;
+                this.rear = newnode;
             }
-            this.top = newnode;
-
         }
-        public void Display()
+        public void Display(Node<T> top)
         {
-            Node<T> temp = this.top;
+            Node<T> temp = top;
             while (temp != null)
             {
                 Console.Write(temp.data + " ");
