@@ -8,8 +8,9 @@ namespace DataStructureProgram
 {
     class QueueUsingStacks<T> where T:IComparable
     {
-        Node<T> top = null;
-        Node<T> top1 = null;
+        Node<T> top = null;//stack1
+        Node<T> top1 = null;//stack2
+        //push to stack1
         public void Enqueue(int number)
         {
             for(int i = 0; i.CompareTo(number)<0; i++)
@@ -63,7 +64,7 @@ namespace DataStructureProgram
             this.top = this.top.next;
         }
 
-
+        //stack2 to maintain queue
 
         public void PushStack2(T data)
         {

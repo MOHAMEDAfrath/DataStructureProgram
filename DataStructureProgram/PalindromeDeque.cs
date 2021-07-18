@@ -10,6 +10,7 @@ namespace DataStructureProgram
     {
         Node<T> front = null;
         string result = "";
+        //Enqueue to Double ended queue
         public void EnqueueString(string data)
         {
             for (int i = 0; i <data.Length; i++) {
@@ -26,6 +27,7 @@ namespace DataStructureProgram
             }
             for(int i = 0; i < data.Length; i++)
             {
+                //double ended queue allows us to add or delete from both ends
                 DeleteLast();
             }
             if(result.Equals(data))
@@ -37,7 +39,7 @@ namespace DataStructureProgram
                 Console.WriteLine(result+" is not a palindrome");
             }
         }
-
+        //insertion into queue
         public Node<T> GetLastNode()
         {
             Node<T> temp = this.front;
@@ -47,6 +49,7 @@ namespace DataStructureProgram
             }
             return temp;
         }
+        //delete from last because it is a double ended queue
         public void DeleteLast()
         {
             if (this.front == null)

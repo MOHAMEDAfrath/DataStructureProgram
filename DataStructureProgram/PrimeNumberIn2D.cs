@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace DataStructureProgram
 {
-
+    //Printing primenumbers in a 2d array
     public class PrimeNumberIn2D<T> where T:IComparable
     {
        
-        public  int range = 0, index = 0, change = 0;
+        public  int range = 0, index = 0, newrange = 0;
         public void PrimeChecker(int start, int end)
         {
             T[,] primeNumbers = new T[10, 100];
@@ -25,10 +25,10 @@ namespace DataStructureProgram
                     range = Convert.ToInt32(ind) - 48;
 
                 }
-                if (change != range)
+                if (newrange != range)
                 {
                     index = 0;
-                    change = range;
+                    newrange = range;
                 }
                 int flag = 0;
                 for (int j = start; j < i; j++)
@@ -46,7 +46,7 @@ namespace DataStructureProgram
                 }
             }
             //Anagram Founder
-            change = 0;
+            newrange = 0;
             for (int k = 0; k < 10; k++)
             {
                 for (int l = 0; l < 100; l++)
@@ -62,10 +62,10 @@ namespace DataStructureProgram
                             range = Convert.ToInt32(ind) - 48;
 
                         }
-                        if (change != range)
+                        if (newrange != range)
                         {
                             index = 0;
-                            change = range;
+                            newrange = range;
                         }
                         char[] temp = primeNumbers[k, l].ToString().ToCharArray();
                         Array.Sort(temp);

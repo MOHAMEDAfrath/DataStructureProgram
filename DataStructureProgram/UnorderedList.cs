@@ -10,6 +10,7 @@ namespace DataStructureProgram
     class UnorderedList<T>
     {
         Node<T> head;
+        //reads data from file to list
         public void UnOrdered()
         {
             string text = File.ReadAllText(@"C:\Users\afrat\source\repos\DataStructureProgram\DataStructureProgram\Temporary.txt");
@@ -20,6 +21,7 @@ namespace DataStructureProgram
             }
 
         }
+        //insert at last
         public void InsertAtLast(T data)
         {
             Node<T> newnode = new Node<T>(data);
@@ -34,6 +36,7 @@ namespace DataStructureProgram
             }
 
         }
+        //get the last node
         
         public Node<T> GetLastNode()
         {
@@ -44,6 +47,7 @@ namespace DataStructureProgram
             }
             return temp;
         }
+        //search the string if found remove else add
         public void Search(T key)
         {
             bool found = true;

@@ -15,11 +15,13 @@ namespace DataStructureProgram
             {
                 if(expressions[i] == '(')
                 {
+                    //push into stack where we find (
                     Push((T)Convert.ChangeType(expressions[i],typeof(T)));
                 }
             }
             for(int i = 0; i < expressions.Length; i++)
             {
+                //for every ) parentheses the ( parentheses is poped
                 if (expressions[i] == ')')
                 {
                     if(this.top == null)
@@ -30,6 +32,7 @@ namespace DataStructureProgram
                     Pop();
                 }
             }
+            //if empty balanced parentheses
             bool result = checkEmpty();
             if (result)
             {

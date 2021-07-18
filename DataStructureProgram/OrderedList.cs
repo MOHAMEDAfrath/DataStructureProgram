@@ -10,6 +10,7 @@ namespace DataStructureProgram
     class OrderedList<T> where T:IComparable
     {
         Node<T> head;
+        //reads data from file and add to linked list
         public void Ordered()
         {
             string text = File.ReadAllText(@"C:\Users\afrat\source\repos\DataStructureProgram\DataStructureProgram\OrderedList.txt");
@@ -20,6 +21,7 @@ namespace DataStructureProgram
             }
 
         }
+
         public void InsertAtLast(T data)
         {
             Node<T> newnode = new Node<T>(data);
@@ -34,7 +36,7 @@ namespace DataStructureProgram
             }
 
         }
-
+        //get last node of linked list
         public Node<T> GetLastNode()
         {
             Node<T> temp = this.head;
@@ -44,6 +46,7 @@ namespace DataStructureProgram
             }
             return temp;
         }
+        //sorts the linked list
         public void Sort()
         {
             Node<T> temp = this.head;
@@ -62,6 +65,7 @@ namespace DataStructureProgram
             }
 
         }
+        //inserts the not found element in the sorted list
         public void InsertAtSortedPosition(T key)
         {
             Node<T> newnode = new Node<T>(key);
@@ -95,6 +99,7 @@ namespace DataStructureProgram
             }
             
         }
+        //searches the data if found removes from list else adds the data to list and is updated to file
         public void Search(string key)
         {
             bool found = true;
@@ -117,6 +122,7 @@ namespace DataStructureProgram
             }
 
         }
+        //iffound removes from list and add to the file
         public void IfFoundRemove(T key)
         {
             Node<T> temp = this.head;

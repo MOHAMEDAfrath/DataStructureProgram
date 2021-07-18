@@ -11,6 +11,7 @@ namespace DataStructureProgram
      
         public static double CountBST(int number)
         {
+            //catalan number used for counting problems
             int[] catalan = new int[number + 1];
             catalan[0] = catalan[1] = 1;
             for (int i = 2; i <= number; i++)

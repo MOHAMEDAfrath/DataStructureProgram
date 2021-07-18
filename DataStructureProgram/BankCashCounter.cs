@@ -10,6 +10,7 @@ namespace DataStructureProgram
     {
         Node<T> front = null, rear = null;
         int count = 0;bool flag = true;
+        //create a queue with customers
         public void CreateQueueWithCustomers(T customers)
         {
 
@@ -29,6 +30,7 @@ namespace DataStructureProgram
             }
             Console.WriteLine("Queued {0} {1}", count,customers);
         }
+        //dequeue operation
         public void Dequeue()
         {
             if (this.front == null)
@@ -40,6 +42,7 @@ namespace DataStructureProgram
             BankOperations(this.front.data);
              this.front = this.front.next;
         }
+        //each member in queue enter the bank counter and get served
         public void BankOperations(T member)
         {
             while(this.front != null) { 

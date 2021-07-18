@@ -8,6 +8,7 @@ namespace DataStructureProgram
 {
     public class Calendar
     {
+        //variables are declared
         int month;
         int year;
         int[,] calendar;
@@ -19,12 +20,14 @@ namespace DataStructureProgram
             this.year = year;
             this.calendar = new int[6, 7];
         }
+        //prints the header of calendar
         public void Header()
         {
             Console.WriteLine("*******Calendar "+month+"-"+year+"*******");
             Console.WriteLine(months[month-1]+" "+year);
             Console.WriteLine("Sun Mon Tue Wed Thur Fri Sat");
         }
+        //to find the day on which the date falls
         public static int DayFromDate(int date, int month, int year)
         {
             int yo = year - (14 - month) / 12;
@@ -33,6 +36,7 @@ namespace DataStructureProgram
             int d0 = (date + x + 31 * mo / 12) % 7;
             return d0;
         }
+        //fill the first row of the month calendar
         public void FillFirstRow(int startDate)
         {
             while (startDate<7)
@@ -42,6 +46,7 @@ namespace DataStructureProgram
                 currentDay++;
             }
         }
+        //fills the rest of the calendar
         public void CalenderFill()
         {
             int startDate = DayFromDate(1, month, year);
@@ -57,6 +62,7 @@ namespace DataStructureProgram
             }
 
         }
+        //displaying the calendar
         public void DisplayCalendar()
         {
             for (int i = 0; i < 6; i++)

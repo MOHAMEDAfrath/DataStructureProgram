@@ -17,6 +17,8 @@ namespace DataStructureProgram
             this.size = size;
             this.items = new LinkedList<T>[size];
         }
+
+        //Reads from file
         public void ReadInput()
         {
             string fileData = File.ReadAllText(@"C:\Users\afrat\source\repos\DataStructureProgram\DataStructureProgram\HashingTest.txt");
@@ -40,11 +42,13 @@ namespace DataStructureProgram
                 Console.WriteLine("Not Updated");
             }
         }
+        //finds the bucket value
         public int GetBucketValue(T key)
         {
             int position = Convert.ToInt32(key) % 11;
             return Math.Abs(position);
         }
+        //Chaining
         public LinkedList<T> GetLinkedList(int position)
         {
             LinkedList<T> linkedlist = items[position];
@@ -55,12 +59,14 @@ namespace DataStructureProgram
             }
             return linkedlist;
         }
+        //Add the data to hashtable 
         public void Add(T data)
         {
             int position = GetBucketValue(data);
             LinkedList<T> linkedList = GetLinkedList(position);
             linkedList.AddLast(data);
         }
+        //removes the found key;
         public void Remove(LinkedList<T> list, T value, bool found)
         {
             if(found == true)
@@ -72,6 +78,7 @@ namespace DataStructureProgram
                 Add(value);
             }
         }
+        //displays based on bucket value
         public string Display()
         {
 
@@ -93,6 +100,7 @@ namespace DataStructureProgram
             Console.WriteLine(result);
             return result;
         }
+        //searches the data and calls add if not present else removes from hash table 
         public void Search(T value)
         {
             int position = GetBucketValue(value);
