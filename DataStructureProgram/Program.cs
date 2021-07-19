@@ -109,9 +109,22 @@ namespace DataStructureProgram
                         Console.WriteLine("Enter Year");
                         int year = Convert.ToInt32(Console.ReadLine());
                         Calendar calendar = new Calendar(month,year);
-                        calendar.Header();
-                        calendar.CalenderFill();
-                        calendar.DisplayCalendar();
+                        Console.WriteLine("Enter 1 to display using 2D array");
+                        Console.WriteLine("Enter 2 to display using Queue");
+                        if (Console.ReadLine() == "1")
+                        {
+                            calendar.Header();
+                            calendar.CalenderFill();
+                            calendar.DisplayCalendar();
+                        }
+                        else
+                        {
+                            calendar.Header();
+                            calendar.CalenderFill();
+                            calendar.Display();
+
+                        }
+                        
                         break;
                     case "11":
                         return;

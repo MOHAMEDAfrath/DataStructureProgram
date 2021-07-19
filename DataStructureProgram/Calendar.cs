@@ -14,6 +14,8 @@ namespace DataStructureProgram
         int[,] calendar;
         string[] months = { "January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
         int currentDay = 1;
+        public static Queue<CalendarWeekObject<Calendar>> week = new Queue<CalendarWeekObject<Calendar>>();
+        List<string> weeks = new List<string>() { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
         public Calendar(int month,int year)
         {
             this.month = month;
@@ -39,12 +41,27 @@ namespace DataStructureProgram
         //fill the first row of the month calendar
         public void FillFirstRow(int startDate)
         {
+            //creating weekdayqueue with class as type
+            CalendarWeekObject<Calendar> weekDayQueue = new CalendarWeekObject<Calendar>();
+            int j = 0;
+            while (j < startDate)
+            {
+                CalendarWeekObject<Calendar> calenderUsingWeekObjects = new CalendarWeekObject<Calendar>(weeks[j], "");
+                weekDayQueue.AddLast(calenderUsingWeekObjects);
+                j++;
+
+            }
+           
             while (startDate<7)
             {
+                
                 calendar[0, startDate] = currentDay;
+                CalendarWeekObject<Calendar> calenderUsingWeekObjects = new CalendarWeekObject<Calendar>(weeks[startDate], Convert.ToString(currentDay));
+                weekDayQueue.AddLast(calenderUsingWeekObjects);
                 startDate++;
                 currentDay++;
             }
+            week.Enqueue(weekDayQueue);
         }
         //fills the rest of the calendar
         public void CalenderFill()
@@ -54,12 +71,17 @@ namespace DataStructureProgram
             FillFirstRow(startDate);
             for (int i = 1; i < 6; i++)
             {
+                CalendarWeekObject<Calendar> weekDayQueue = new CalendarWeekObject<Calendar>();
                 for (int j = 0; j < 7&&currentDay<=days; j++)
                 {
-                    calendar[i, j] = currentDay++;
 
+                    calendar[i, j] = currentDay++;
+                    CalendarWeekObject<Calendar> calenderUsingWeekObjects = new CalendarWeekObject<Calendar>(weeks[j], Convert.ToString(calendar[i,j]));
+                    weekDayQueue.AddLast(calenderUsingWeekObjects);
                 }
+                week.Enqueue(weekDayQueue);
             }
+          
 
         }
         //displaying the calendar
@@ -76,6 +98,15 @@ namespace DataStructureProgram
 
                 }
                 Console.WriteLine(" ");
+            }
+        }
+        //Display for queue
+        public void Display()
+        {
+            Header();
+            foreach (var i in week)
+            {
+                i.DisplayWeek();
             }
         }
     }
